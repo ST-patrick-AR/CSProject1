@@ -9,7 +9,7 @@ Public Class Form1
 
         Try
             conn.Open()
-            MessageBox.Show("Connection to database was successful!")
+            MessageBox.Show("Connection to database was successful!!!!!!!!!!!!")
             conn.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -24,7 +24,7 @@ Public Class Form1
         Try
             conn.Open()
             Dim Query As String
-            Query = "SELECT * FROM Accounts WHERE username = '" & tbUN.Text & "' AND password = '" & tbPASS.Text & "'"
+            Query = "SELECT * FROM data WHERE username = '" & tbUN.Text & "' AND password = '" & tbPASS.Text & "'"
             COMMAND = New MySqlCommand(Query, conn)
             READER = COMMAND.ExecuteReader
             Dim count As Integer
@@ -34,6 +34,8 @@ Public Class Form1
             End While
             If count = 1 Then
                 MessageBox.Show("Login successful!")
+                Form2.Show()
+                Me.Hide()
             ElseIf count > 1 Then
                 MessageBox.Show("Username and password are duplicate!")
             Else
